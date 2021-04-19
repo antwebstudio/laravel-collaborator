@@ -1,5 +1,5 @@
 {
-    "name": "slizk-package-template",
+    "name": "slizk-collaborator",
     "private": true,
     "scripts": {
         "dev": "npm run development",
@@ -16,7 +16,7 @@
         "axios": "^0.21.1",
         "browser-sync": "^2.26.13",
         "cross-env": "^7.0.3",
-        "laravel-mix": "^5.0.9",
+        "laravel-mix": "^6.0.16",
         "laravel-mix-alias": "^1.0.2",
         "lodash": "^4.17.20",
         "resolve-url-loader": "^3.1.2",

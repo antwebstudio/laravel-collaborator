@@ -1,10 +1,10 @@
 <?php
 
-namespace Slizk\PackageTemplate;
+namespace Slizk\Collaborator;
 
 use Illuminate\Support\ServiceProvider;
 
-class PackageTemplateServiceProvider extends ServiceProvider
+class CollaboratorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
