@@ -1,0 +1,5 @@
+/vendor/
+/node_modules/
+composer.dev.*
+devcomposer
+.phpunit.result.cache
