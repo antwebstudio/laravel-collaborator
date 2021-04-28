@@ -1,0 +1,8 @@
+* text=auto
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+*.png binary
+*.jpg binary
+*.gif binary
+CHANGELOG.md export-ignore
