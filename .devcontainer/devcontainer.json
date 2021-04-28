@@ -1,0 +1,11 @@
+{
+    "name": "PHP 7.4",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "php",
+    "extensions": [
+        "felixfbecker.php-debug",
+        "onecentlin.laravel-extension-pack"
+    ],
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose"
+}

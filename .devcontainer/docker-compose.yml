@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  # PHP Application
+  php:
+    image: mlaxwong/php-dev-container:7.4.0.1
+    container_name: mlaxwong_collaborator
+    volumes:
+      - ../:/app:delegated
+    privileged: true
