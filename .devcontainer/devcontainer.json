@@ -4,7 +4,8 @@
     "service": "php",
     "extensions": [
         "felixfbecker.php-debug",
-        "onecentlin.laravel-extension-pack"
+        "onecentlin.laravel-extension-pack",
+        "neilbrayfield.php-docblocker"
     ],
     "workspaceFolder": "/app",
     "shutdownAction": "stopCompose"
