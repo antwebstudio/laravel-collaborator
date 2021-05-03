@@ -18,6 +18,6 @@ return [
         ],
     ],
     'models' => [
-        'user' => \App\User::class,
+        'user' => \App\Models\User::class,
     ],
 ];
