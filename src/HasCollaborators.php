@@ -17,13 +17,13 @@ trait HasCollaborators
     public function scopeCollaboratedWith(Builder $builder, Model $user)
     {
         $model = $this->getModel();
-        $class = get_class($model);
+        $class = $model->getMorphClass();
         $table = config('collaborator.pivot.table');
 
         $collaboratable_ids = DB::table($table)
             ->where(config('collaborator.pivot.columns.collaborator_id'), '=', $user->id)
             ->where(config('collaborator.pivot.columns.collaboratable_type'), '=', $class)
-            ->pluck('collaboratable_id')
+            ->pluck(config('collaborator.pivot.columns.collaboratable_id'))
         ;
 
         $builder->whereIn('id', $collaboratable_ids);
@@ -35,14 +35,14 @@ trait HasCollaborators
     public function scopeOwnedBy(Builder $builder, Model $user)
     {
         $model = $this->getModel();
-        $class = get_class($model);
+        $class = $model->getMorphClass();
         $table = config('collaborator.pivot.table');
 
         $collaboratable_ids = DB::table($table)
             ->where(config('collaborator.pivot.columns.collaborator_id'), '=', $user->id)
             ->where(config('collaborator.pivot.columns.collaboratable_type'), '=', $class)
             ->where(config('collaborator.pivot.columns.is_owner'), '=', true)
-            ->pluck('collaboratable_id')
+            ->pluck(config('collaborator.pivot.columns.collaboratable_id'))
         ;
 
         $builder->whereIn('id', $collaboratable_ids);
@@ -54,8 +54,15 @@ trait HasCollaborators
     public function addCollaborator(Model $user)
     {
         $model = $this->getModel();
-        $class = get_class($user);
-        $model->collaborators()->save($user, ['collaborator_type' => $class]);
+        $found = $model
+            ->collaborators()
+            ->where(config('collaborator.pivot.columns.collaborator_id'), '=', $user->getKey())
+            ->exists();
+
+        if (!$found) {
+            $model->collaborators()->save($user, ['collaborator_type' => $user->getMorphClass()]);
+        }
+
         $model->load('collaborators');
         return $this;
     }
